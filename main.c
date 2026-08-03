@@ -65,7 +65,7 @@ bool compareResult(long n, const double *Z_c, const double *Z_asm) {
 }
 
 // print the first 10 elements
-void print_first_10(const char *label, const double *Z) {
+void printFirstTen(const char *label, const double *Z) {
     printf("%sFirst 10 Elements:\n  [", label);
     for (int i = 0; i < 10; i++) {
         printf("%.8f%s", Z[i], (i == 9) ? "" : ", ");
@@ -116,9 +116,9 @@ void test(long n) {
     }
     double avgTimeASM = totalTimeASM / NUM_RUNS;
 
-    print_first_10("\nC         ||      ", Z_c);
+    printFirstTen("\nC         ||      ", Z_c);
     printf("\n");
-    print_first_10("Assembly    ||      ", Z_asm);
+    printFirstTen("Assembly    ||      ", Z_asm);
     printf("\n");
 
     if(compareResult(n, Z_c, Z_asm)){
