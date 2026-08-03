@@ -1,3 +1,11 @@
+# COMPILATION:
+# 
+# gcc -O2 -c kernel.s -o kernel.exe
+# gcc -O2 -c main.c -o main.exe
+# gcc main.exe kernel.exe -lm -o run.exe
+# 
+# run.exe
+
 .intel_syntax noprefix
 .global calculateDistanceASM
 .text
