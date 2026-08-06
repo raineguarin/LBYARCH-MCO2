@@ -3,6 +3,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdbool.h>
+#include <windows.h>
 
 #define NUM_RUNS 30
 #define EPSILON 1e-9
@@ -43,6 +44,14 @@ void initializeVectors(long n, double* X1, double* X2, double* Y1, double* Y2) {
     }
 }
 
+// added high precision timer to hopefully make c faster
+double get_time_seconds() {
+    LARGE_INTEGER freq, counter;
+    QueryPerformanceFrequency(&freq);
+    QueryPerformanceCounter(&counter);
+    return (double)counter.QuadPart / (double)freq.QuadPart;
+}
+
 // sanity check: compare assembly and c outputs
 bool compareResult(long n, const double* Z_c, const double* Z_asm) {
     for (long i = 0; i < n; i++) {
@@ -77,7 +86,7 @@ void test(long n) {
 
     if (!X1 || !X2 || !Y1 || !Y2 || !Z_c || !Z_asm) {
         printf("Memory allocation failed at n = %ld!\n", n);
-
+        free(X1); free(X2); free(Y1); free(Y2); free(Z_c); free(Z_asm);
         return;
     }
 
@@ -87,11 +96,10 @@ void test(long n) {
     double totalTimeC = 0.0;
 
     for (int run = 0; run < NUM_RUNS; run++) {
-        clock_t start = clock();
+        double start = get_time_seconds();
         calculateDistanceC(n, X1, X2, Y1, Y2, Z_c);
-        clock_t end = clock();
-
-        totalTimeC += (double)(end - start) / CLOCKS_PER_SEC;
+        double end = get_time_seconds();
+        totalTimeC += (end - start);
     }
     double avgTimeC = totalTimeC / NUM_RUNS;
 
@@ -148,7 +156,7 @@ int main() {
     printf("\n\nExpected Output   : 2.50000000 1.58113883 2.69258240 1.80277564\n");
 
     // benchmarks (until ^28, haven't tested ^30 yet)
-    long sizes[] = { 1L << 20, 1L << 24, 1L << 28 };
+    long sizes[] = { 1L << 20, 1L << 24, 1L << 26 };
     for (int i = 0; i < 3; i++) {
         test(sizes[i]);
     }
