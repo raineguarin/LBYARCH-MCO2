@@ -33,6 +33,7 @@ Output: store result in vector Z.  Display the result of 1st ten elements of vec
 
 
 **Comparative Analysis** 
+
 Comparing C and x86-64 we can obviously see that Assembly is way faster. One thing to note is that C had way more precise timings which made it be more accurate.
 But in this case it did not help much as it was still slower. C was never even close to the time of Assembly. While it may seem like both had similar performance that is actually not true, 
 Assembly in each case was roughly twice as fast as C. This highlights just how much time Assembly can save. Overall performance is good but could be even better, 
