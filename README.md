@@ -1,3 +1,5 @@
+Demo vid: [https://youtu.be/3nrgrpw4CGA](url)
+
 Write the kernel in (1) C program and (2) an x86-64 assembly language.  The kernel must calculate the distances between the coordinate points across two vectors.
 
 *Required to use functional scalar SIMD registers
