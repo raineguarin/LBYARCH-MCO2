@@ -1,4 +1,8 @@
+**Video**
+
 Demo vid: https://www.youtube.com/watch?v=3nrgrpw4CGA
+
+**Specifications**
 
 Write the kernel in (1) C program and (2) an x86-64 assembly language.  The kernel must calculate the distances between the coordinate points across two vectors.
 
@@ -21,6 +25,21 @@ Y2 -> 2.0, 2.5, 1.0, 1.5
 Z -> 2.5, 1.58113883, 2.692582404, 1.802775638
 
 Output: store result in vector Z.  Display the result of 1st ten elements of vector Z for all versions of kernel (i.e., C and x86-64).
+
+**Program Output Screenshot** 
+
+<img width="1413" height="961" alt="181b8c61-e1a2-4fd1-a2e6-e87c14ee8a32" src="https://github.com/user-attachments/assets/8a77e344-ea55-4815-b2aa-0184e34055b8" />
+
+
+
+**Comparative Analysis** 
+Comparing C and x86-64 we can obviously see that Assembly is way faster. One thing to note is that C had way more precise timings which made it be more accurate.
+But in this case it did not help much as it was still slower. C was never even close to the time of Assembly. While it may seem like both had similar performance that is actually not true, 
+Assembly in each case was roughly twice as fast as C. This highlights just how much time Assembly can save. Overall performance is good but could be even better, 
+but its clear that assembly is way faster.
+
+Unfortunately as well we could not run it in 2^28. It took too long and would sometimes just not work. So we had to settle for 26 instead. 
+
 
 Note:
 
