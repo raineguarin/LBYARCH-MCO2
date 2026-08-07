@@ -155,7 +155,7 @@ int main() {
     for (int i = 0; i < 4; i++) printf("%.8f ", ex_Z_asm[i]);
     printf("\n\nExpected Output   : 2.50000000 1.58113883 2.69258240 1.80277564\n");
 
-    // benchmarks (until ^28, haven't tested ^30 yet)
+    // benchmarks (until ^26 only)
     long sizes[] = { 1L << 20, 1L << 24, 1L << 26 };
     for (int i = 0; i < 3; i++) {
         test(sizes[i]);
