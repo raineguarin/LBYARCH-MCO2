@@ -40,7 +40,6 @@ L1:
     cmp rax, rcx
     jl L1
 
-; keep the blank new line at the end to avoid error in compilation
 done:
     ret
 calculateDistanceASM endp
