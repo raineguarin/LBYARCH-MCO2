@@ -1,3 +1,9 @@
+**Members**
+
+LBYARCH_S25D
+Ching, Ashton
+Guarin, Raine
+
 **Video**
 
 Demo vid: https://www.youtube.com/watch?v=3nrgrpw4CGA
