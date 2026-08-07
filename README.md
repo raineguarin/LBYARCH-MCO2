@@ -1,4 +1,4 @@
-Demo vid: (https://www.youtube.com/watch?v=3nrgrpw4CGA)
+Demo vid: https://www.youtube.com/watch?v=3nrgrpw4CGA
 
 Write the kernel in (1) C program and (2) an x86-64 assembly language.  The kernel must calculate the distances between the coordinate points across two vectors.
 
