@@ -95,22 +95,24 @@ void test(long n) {
     // run C kernel 30 times
     double totalTimeC = 0.0;
 
-    for (int run = 0; run < NUM_RUNS; run++) {
+    for(int run = 0; run < NUM_RUNS; run++){
         double start = get_time_seconds();
         calculateDistanceC(n, X1, X2, Y1, Y2, Z_c);
         double end = get_time_seconds();
+        
         totalTimeC += (end - start);
     }
+
     double avgTimeC = totalTimeC / NUM_RUNS;
 
     // run asm kernel 30 times
     double totalTimeASM = 0.0;
-    for (int run = 0; run < NUM_RUNS; run++) {
-        clock_t start = clock();
+    for(int run = 0; run < NUM_RUNS; run++){
+        double start = get_time_seconds();
         calculateDistanceASM(n, X1, X2, Y1, Y2, Z_asm);
-        clock_t end = clock();
-
-        totalTimeASM += (double)(end - start) / CLOCKS_PER_SEC;
+        double end = get_time_seconds();
+        
+        totalTimeASM += (end - start);
     }
     double avgTimeASM = totalTimeASM / NUM_RUNS;
 
@@ -123,7 +125,7 @@ void test(long n) {
         printf("\n[CORRECTNESS CHECK]: PASSED\n\n");
     }
     else {
-        printf("\n[CORRECTNESS CHECK]: FAILED\\nn");
+        printf("\n[CORRECTNESS CHECK]: FAILED\n\n");
     }
 
     printf("C Kernel Avg Time (%d runs)   : %.6f seconds\n", NUM_RUNS, avgTimeC);
@@ -155,7 +157,7 @@ int main() {
     for (int i = 0; i < 4; i++) printf("%.8f ", ex_Z_asm[i]);
     printf("\n\nExpected Output   : 2.50000000 1.58113883 2.69258240 1.80277564\n");
 
-    // benchmarks (until ^26 only)
+    // benchmarks (until ^26 only since our machines only handle up till here)
     long sizes[] = { 1L << 20, 1L << 24, 1L << 26 };
     for (int i = 0; i < 3; i++) {
         test(sizes[i]);
